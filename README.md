@@ -1,0 +1,1 @@
+https://bitcointalk.org/index.php?topic=617724.0
