@@ -112,10 +112,13 @@ version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 
 obj/%.o: %.cpp $(HEADERS)
-	$(CXX) -c $(CFLAGS) -o $@ $<
+	$(CXX) -c $(xCXXFLAGS) -o $@ $<
+
+obj/%.o: %.c $(HEADERS)
+    $(CXX) -c $(xCXXFLAGS) -fpermissive -o $@ $<
 
 obj/zerocoin/%.o: zerocoin/%.cpp $(HEADERS)
-    $(CXX) -c $(CFLAGS) -o $@ $<
+    $(CXX) -c $(xCXXFLAGS) -o $@ $<
 
 dankcoind.exe: $(OBJS:obj/%=obj/%)
     $(CXX) $(xCXXFLAGS) $(xLDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
