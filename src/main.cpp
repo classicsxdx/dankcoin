@@ -16,7 +16,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/random/mersenne_twister.hpp>
-#include <boost/random/uniform_int_distribution.hpp>
+
 
 
 using namespace std;
@@ -44,7 +44,7 @@ CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing = 1 * 60; // 60 seconds
 unsigned int nStakeMinAge = 24 * 60 * 60; // 1 day min stake
-unsigned int nStakeMaxAge = 45 * 24 * 60 * 60;// 3 days max stake
+unsigned int nStakeMaxAge = 45 * 24 * 60 * 60;// 45 days max stake
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 90;
@@ -1001,7 +1001,7 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
     return nSubsidy + nFees;
 }
 
-static const int64_t nTargetTimespan = 10 * 60;  // 10 mins
+static const int64_t nTargetTimespan = 42 * 60;  // 10 mins
 //
 // maximum nBits value could possible be required nTime after
 //
