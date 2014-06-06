@@ -2,8 +2,6 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-TARGET_PLATFORM:=i686
-
 DEPSDIR:=/usr/i686-w64-mingw32
 
 CC := i686-w64-mingw32-gcc
@@ -117,17 +115,10 @@ obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
 obj/zerocoin/%.o: zerocoin/%.cpp $(HEADERS)
-	$(CXX) -c $(CFLAGS) -o $@ $<
+    $(CXX) -c $(CFLAGS) -o $@ $<
 
 dankcoind.exe: $(OBJS:obj/%=obj/%)
-	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
-	$(STRIP) dankcoind.exe
-
-obj/scrypt-x86.o: scrypt-x86.S
-	$(CXX) -c $(CFLAGS) -MMD -o $@ $<
-
-obj/scrypt-x86_64.o: scrypt-x86_64.S
-	$(CXX) -c $(CFLAGS) -MMD -o $@ $<
+    $(CXX) $(xCXXFLAGS) $(xLDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
 	-rm -f obj/*.o
